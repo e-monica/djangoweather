@@ -4,8 +4,44 @@
 {%block content%}
 
 
-<h1> Hello world </h1>
 
+<!--{{ api.0 }}<br/><br/>-->
+
+{% if zipcode %}
+	{{ zipcode }}
+{% endif %}
+
+
+{% if api %}
+
+	<!--try:
+    	page1 = requests.get(ap)
+	except requests.exceptions.ConnectionError:
+    	r.status_code = "Connection refused"-->
+
+	{% if api == "Error..." %}
+		There was an error, please try again...
+	{% else %}
+
+	<div class="jumbotron {{ category_color }}">
+	  <h1 class="display-4">{{ api.0.Category.Name }}<br/></h1>
+	  <p class="lead">Current {{ api.0.ReportingArea }}  Air Quality: {{ api.0.AQI }}<br/></</p>
+	  <hr class="my-4">
+	  
+	  <p>{{ category_description}}</p>
+
+	</div>
+
+<br/>
+
+		<!--{{ api.0 }}<br/><br/>
+
+		{{ api.1 }}<br/><br/>
+
+		{{ api.2 }}<br/><br/>-->
+	{% endif %}
+
+{% endif %}
 
 {% endblock %}
 
